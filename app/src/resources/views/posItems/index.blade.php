@@ -7,7 +7,7 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<h1>{{$title}}</h1>
+<h1>所持アイテム一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="userList" class="nav-link px-2">users</a></li>
@@ -35,7 +35,7 @@
     @endforeach
 </ul>
 <div class="col-md-3 text-end">
-    <form method="POST" action="{{url('accounts/doLogout')}}">
+    <form method="POST" action="{{url('auth/doLogout')}}">
         @csrf
         <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
     </form>

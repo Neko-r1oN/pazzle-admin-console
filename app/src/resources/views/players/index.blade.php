@@ -7,11 +7,11 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<h1>{{$title}}</h1>
+<h1>プレイヤー一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="userList" class="nav-link px-2">users</a></li>
-        <li><a href="playerList" class="nav-link px-2 link-secondary">player</a></li>
+        <li><a href="playerList" class="nav-link px-2 link-secondary ">player</a></li>
         <li><a href="itemList" class="nav-link px-2 ">items</a></li>
         <li><a href="posItemList" class="nav-link px-2">posItems</a></li>
     </ul>
@@ -37,7 +37,7 @@
     @endforeach
 </ul>
 <div class="col-md-3 text-end">
-    <form method="POST" action="{{url('accounts/doLogout')}}">
+    <form method="POST" action="{{url('auth/doLogout')}}">
         @csrf
         <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
     </form>

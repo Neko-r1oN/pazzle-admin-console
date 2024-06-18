@@ -16,7 +16,7 @@
 
 <html lang="ja">
 <form class="signin h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0" method="POST"
-      action="{{url('doLogin')}}">
+      action="{{url('auth/doLogin')}}">
     @csrf
     <div class="container">
         <div class="row">
@@ -41,6 +41,15 @@
             @endif
         </div>
     </div>
+
+    @if($errors -> any())
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
+
 </form>
 
 
