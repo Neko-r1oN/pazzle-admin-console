@@ -2,18 +2,18 @@
 
     namespace Database\Seeders;
 
-    use App\Models\Player;
+    use App\Models\User;
     use Illuminate\Database\Console\Seeds\WithoutModelEvents;
     use Illuminate\Database\Seeder;
 
-    class PlayerTableSeeder extends Seeder
+    class UsersTableSeeder extends Seeder
     {
         /**
          * Run the database seeds.
          */
         public function run(): void
         {
-            Player::create([
+            User::create([
 
                 'id' => 1,
                 'name' => 'r1oN',
@@ -21,14 +21,14 @@
                 'exp' => 290,
                 'life' => 1000,
             ]);
-            Player::create([
+            User::create([
                 'id' => 2,
                 'name' => 'SyuEn',
                 'level' => 44,
                 'exp' => 777,
                 'life' => 4649,
             ]);
-            Player::create([
+            User::create([
                 'id' => 3,
                 'name' => 'GOD',
                 'level' => 999,

@@ -10,8 +10,8 @@
 <h1>プレイヤー一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="userList" class="nav-link px-2">users</a></li>
-        <li><a href="playerList" class="nav-link px-2 link-secondary ">player</a></li>
+        <li><a href="accountList" class="nav-link px-2">account</a></li>
+        <li><a href="userList" class="nav-link px-2  link-secondary">user</a></li>
         <li><a href="itemList" class="nav-link px-2 ">items</a></li>
         <li><a href="posItemList" class="nav-link px-2">posItems</a></li>
     </ul>
@@ -26,13 +26,13 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($players as $player)
+        @foreach($users as $user)
             <tr>
-                <th>{{$player['id']}}</th>
-                <th>{{$player['name']}}</th>
-                <th>{{$player['level']}}</th>
-                <th>{{$player['exp']}}</th>
-                <th>{{$player['life']}}</th>
+                <th>{{$user['id']}}</th>
+                <th>{{$user['name']}}</th>
+                <th>{{$user['level']}}</th>
+                <th>{{$user['exp']}}</th>
+                <th>{{$user['life']}}</th>
             </tr>
     @endforeach
 </ul>

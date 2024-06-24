@@ -15,7 +15,7 @@
          */
         public function up(): void
         {
-            Schema::create('players', function (Blueprint $table) {
+            Schema::create('users', function (Blueprint $table) {
                 $table->id();                                 //IDカラム
                 $table->string('name', 20);      //nameカラム(20文字)
                 $table->integer('level'); //passwordカラム(100文字)
@@ -33,6 +33,6 @@
          */
         public function down(): void
         {
-            Schema::dropIfExists('players');
+            Schema::dropIfExists('users');
         }
     };

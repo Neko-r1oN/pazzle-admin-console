@@ -9,10 +9,10 @@
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     //ユーザーアカウントリスト表示
     Route::get('accounts/index', [AccountController::class, 'index']);
-    Route::get('accounts/userList', [AccountController::class, 'userList'])->name('accounts.index');
+    Route::get('accounts/accountList', [AccountController::class, 'accountList'])->name('accounts.index');
 
     //プレイヤーリスト表示
-    Route::get('accounts/playerList', [AccountController::class, 'playerList'])->name('players.index');
+    Route::get('accounts/userList', [AccountController::class, 'userList'])->name('users.index');
     //アイテムリスト表示
     Route::get('accounts/itemList', [AccountController::class, 'itemList'])->name('items.index');
     //所持アイテムリスト表示

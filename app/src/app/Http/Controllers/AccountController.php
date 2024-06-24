@@ -3,7 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Models\Account;
-    use App\Models\Player;
+    use App\Models\User;
     use App\Models\Item;
     use App\Models\PosItem;
     use Illuminate\Http\Request;
@@ -50,7 +50,7 @@
             }
         }
 
-        public function userList(Request $request)
+        public function accountList(Request $request)
         {//
             //ログインしているかチェック
             if ($request->session()->exists('login')) {
@@ -66,15 +66,15 @@
 
         }
 
-        public function playerList(Request $request)
+        public function userList(Request $request)
         {//
             //ログインしているかチェック
             if ($request->session()->exists('login')) {
 
 
                 //テーブルの全てのレコードを取得
-                $players = Player::all();
-                return view('players/index', ['players' => $players]);
+                $users = User::all();
+                return view('users.index', ['users' => $users]);
             }//ログインされていない場合
             else {
                 return view('login/index');
