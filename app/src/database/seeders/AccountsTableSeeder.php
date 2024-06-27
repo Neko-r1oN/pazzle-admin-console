@@ -15,17 +15,17 @@
             // User::factory(10)->create();
 
             Account::create([
-                'id' => 1,
+
                 'name' => 'jobi',
                 'password' => Hash::make('jobi'),
             ]);
             Account::create([
-                'id' => 2,
+
                 'name' => 'test',
                 'password' => Hash::make('test'),
             ]);
             Account::create([
-                'id' => 3,
+
                 'name' => 'r1oN',
                 'password' => Hash::make('r1oN'),
             ]);

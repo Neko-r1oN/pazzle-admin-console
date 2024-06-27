@@ -16,5 +16,7 @@
             $this->call(UsersTableSeeder::class);
             $this->call(ItemTableSeeder::class);
             $this->call(PosItemTableSeeder::class);
+            $this->call(MailTableSeeder::class);
+            $this->call(OpenMailsTableSeeder::class);
         }
     }

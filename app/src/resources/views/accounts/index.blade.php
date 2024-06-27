@@ -7,13 +7,14 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<h1>管理者ユーザー一覧</h1>
+<h1>管理者アカウント一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="accountList" class="nav-link px-2 link-secondary">account</a></li>
-        <li><a href="userList" class="nav-link px-2  ">user</a></li>
-        <li><a href="itemList" class="nav-link px-2 ">items</a></li>
-        <li><a href="posItemList" class="nav-link px-2">posItems</a></li>
+        <li><a href="accounts" class="nav-link px-2 link-secondary">account</a></li>
+        <li><a href="users" class="nav-link px-2  ">user</a></li>
+        <li><a href="items" class="nav-link px-2 ">items</a></li>
+        <li><a href="posItems" class="nav-link px-2">posItems</a></li>
+        <li><a href="mails" class="nav-link px-2">mails</a></li>
     </ul>
     <div class="form-group">
         <input
@@ -35,10 +36,17 @@
         <tbody>
         @foreach($accounts as $account)
             <tr>
-                <th>{{$account['id']}}</th>
-                <th>{{$account['name']}}</th>
-                <th>{{$account['password']}}</th>
+                <td>{{$account['id']}}</td>
+                <td>{{$account['name']}}</td>
+                <td>{{$account['password']}}</td>
+                <td>
+                    <a href="{{ route('accounts.destroy', ['id'=>$account['id']]) }}"
+                       class="btn btn-danger">削除</a>
+                    <a href="{{ route('accounts.showUpdate', ['id'=>$account['id']]) }}"
+                       class="btn btn-success">更新</a>
+                </td>
             </tr>
+
     @endforeach
 </ul>
 <div class="col-md-3 text-end">
@@ -46,6 +54,12 @@
         @csrf
         <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
     </form>
+
+    <form method="GET" action="{{url('accounts/create')}}">
+        @csrf
+        <button type="submit" class="btn btn-outline-primary me-2">新規登録</button>
+    </form>
 </div>
+
 </body>
 </html>

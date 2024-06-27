@@ -7,13 +7,14 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<h1>プレイヤー一覧</h1>
+<h1>ユーザー一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="accountList" class="nav-link px-2">account</a></li>
-        <li><a href="userList" class="nav-link px-2  link-secondary">user</a></li>
-        <li><a href="itemList" class="nav-link px-2 ">items</a></li>
-        <li><a href="posItemList" class="nav-link px-2">posItems</a></li>
+        <li><a href="accounts" class="nav-link px-2">account</a></li>
+        <li><a href="users" class="nav-link px-2  link-secondary">user</a></li>
+        <li><a href="items" class="nav-link px-2 ">items</a></li>
+        <li><a href="posItems" class="nav-link px-2">posItems</a></li>
+        <li><a href="mails" class="nav-link px-2">mails</a></li>
     </ul>
     <table class="table">
         <thead class="table-dark">
@@ -23,6 +24,7 @@
             <th>レベル</th>
             <th>経験値</th>
             <th>ライフ</th>
+
         </tr>
         </thead>
         <tbody>
@@ -41,6 +43,10 @@
         @csrf
         <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
     </form>
+
+
 </div>
+
+
 </body>
 </html>

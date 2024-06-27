@@ -15,11 +15,11 @@
         {
             Schema::create('pos_items', function (Blueprint $table) {
                 $table->id();                                 //IDカラム
-                $table->string('pla_name', 20);      //nameカラム(20文字)
-                $table->string('item_name', 20); //passwordカラム(100文字)
-                $table->integer('num');
+                $table->integer('user_id');      //nameカラム(20文字)
+                $table->integer('item_id'); //passwordカラム(100文字)
+                $table->integer('item_num');
                 $table->timestamps();                         //created_at,updated_at
-
+                $table->unique(['user_id', 'item_id']);
 
             });
         }

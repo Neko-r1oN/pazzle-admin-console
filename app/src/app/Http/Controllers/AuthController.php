@@ -8,17 +8,15 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
 
+
     class AuthController extends Controller
     {
         //ログイン画面を表示
-        public function showLogin(Request $request)
+        public function index(Request $request)
         {
-            //ログインしてるかチェック
-            if ($request->session()->exists('login')) {
-                return redirect('accounts/userList');
-            } else {
-                return view('login.index');
-            }
+
+            return view('login.index', ['error' => $request['error'] ?? null]);
+
         }
 
         //ログイン処理
@@ -27,11 +25,6 @@
             route('login');
 
             //バリデーションチェック
-            $validated = $request->validate([
-                'name' => ['required', 'min:4', 'max:20'],
-                'password' => ['required'],
-            ]);
-
             $validator = Validator::make($request->all(), [
                 'name' => ['required', 'min:4'],
                 'password' => 'required',
@@ -46,21 +39,20 @@
             //レコードを取得
             $account = Account::where('name', '=', $request['name'])->get();
 
-            //レコードを取得できた場合
-            if ($account->count() > 0) {
 
-                //ハッシュ化したキーと一致した場合
-                if (Hash::check($request['password'], $account[0]->password)) {
+            //レコードを取得・ハッシュ化したキーと一致した場合
+            if ($account->count() > 0 && Hash::check($request['password'], $account[0]->password)) {
 
-                    //ログイン情報を保存
-                    $request->session()->put('login', true);
-                    return redirect('accounts/index');
-
-                }
+                //ログイン情報を保存
+                $request->session()->put('login', true);
+                return redirect()->route('index');
 
             }
             //キーと不一致、存在しないユーザー名だった場合
-            return redirect()->route('login', ['error' => 'invalid']);
+            //return redirect()->route('login', ['error' => 'invalid']);
+            // エラー表示
+            return redirect('/');
+            //return redirect()->route('login.index', ['error' => 'invalid']);
         }
 
         //ログアウト処理
@@ -73,13 +65,5 @@
             return redirect('/');
         }
 
-        //ホームページ表示
-        public function showHome(Request $request)
-        {
-            if ($request->session()->has('login')) {
-                return view('home/index');
-            } else {
-                return redirect('/');
-            }
-        }
+
     }

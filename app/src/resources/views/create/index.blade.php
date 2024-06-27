@@ -15,25 +15,28 @@
 ?>
 
 <html lang="ja">
-<form class=" h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0" method="POST"
-      action="{{url('auth/doLogin')}}">
+<form class="create h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0" method="POST"
+      action="{{url('accounts/store')}}">
     @csrf
     <div class="container">
         <div class="row">
-            <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">Please sign
-                in</h1>
+            <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
+                アカウント登録</h1>
 
 
-            <input type="text" name="name" id="inputPassword" class="form-control" placeholder="Name"
+            <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名" required="">
+
+            <input type="password" name="password" id="password" class="form-control" placeholder="パスワード"
+                   required="">
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="パスワード(確認用)"
                    required="">
 
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
-                   required="">
+
+            <label><input hidden="hidden" name="action" value="store"></label>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="action">登録</button>
 
 
-            <label><input hidden="hidden" name="action" value="doLogin"></label>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="action">Sign in</button>
             @if(isset($error))
                 <br>
                 <div>{{$error}}</div>

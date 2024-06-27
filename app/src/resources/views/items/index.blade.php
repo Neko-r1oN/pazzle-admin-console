@@ -10,10 +10,11 @@
 <h1>アイテム一覧</h1>
 <ul>
     <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="accountList" class="nav-link px-2">account</a></li>
-        <li><a href="userList" class="nav-link px-2  ">user</a></li>
-        <li><a href="itemList" class="nav-link px-2  link-secondary">items</a></li>
-        <li><a href="posItemList" class="nav-link px-2">posItems</a></li>
+        <li><a href="accounts" class="nav-link px-2">account</a></li>
+        <li><a href="users" class="nav-link px-2 ">user</a></li>
+        <li><a href="items" class="nav-link px-2  link-secondary">items</a></li>
+        <li><a href="posItems" class="nav-link px-2">posItems</a></li>
+        <li><a href="mails" class="nav-link px-2">mails</a></li>
     </ul>
     <table class="table">
         <thead class="table-dark">

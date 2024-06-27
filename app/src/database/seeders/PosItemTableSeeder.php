@@ -15,22 +15,22 @@
         {
             PosItem::create([
 
-                'id' => 1,
-                'pla_name' => 'r1oN',
-                'item_name' => '毒チワワ',
-                'num' => 20,
+
+                'user_id' => 1,
+                'item_id' => 1,
+                'item_num' => 20,
             ]);
             PosItem::create([
-                'id' => 2,
-                'pla_name' => 'SyuEn',
-                'item_name' => '氷炭',
-                'num' => 50,
+
+                'user_id' => 2,
+                'item_id' => 2,
+                'item_num' => 50,
             ]);
             PosItem::create([
-                'id' => 3,
-                'pla_name' => 'GOD',
-                'item_name' => '鋭利なフジツボ',
-                'num' => 999,
+
+                'user_id' => 3,
+                'item_id' => 3,
+                'item_num' => 999,
 
             ]);
         }

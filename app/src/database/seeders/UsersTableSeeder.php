@@ -13,6 +13,7 @@
          */
         public function run(): void
         {
+
             User::create([
 
                 'id' => 1,
@@ -35,5 +36,8 @@
                 'exp' => 9999,
                 'life' => 99999,
             ]);
+
+            User::factory(100)->create();
         }
+
     }
