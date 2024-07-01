@@ -37,6 +37,11 @@
             //入力情報をDBに挿入
             OpenMail::create(['user_id' => $request['user_id'], 'mail_id' => $request['mail_id'], 'isOpen' => false]);
 
-            return redirect()->route('accounts.index');
+            return redirect()->route('sent.index');
+        }
+
+        public function sentView(Request $request)
+        {
+            return view('sent/index');
         }
     }

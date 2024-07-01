@@ -1,7 +1,7 @@
 @extends('layouts')
-@section('title','所持アイテム表示画面')
+@section('title','所持アイテム一覧')
 @section('body')
-    <h1>所持アイテム一覧</h1>
+
     <ul>
         <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="accounts" class="nav-link px-2">account</a></li>
@@ -13,10 +13,10 @@
         <table class="table">
             <thead class="table-dark">
             <tr>
-                <th>No</th>
-                <th>プレイヤー名</th>
-                <th>アイテム名</th>
-                <th>所持個数</th>
+                <th class="col-xs-3 col-ms-3 col-md-4 col-lg-4">No</th>
+                <th class="col-xs-3 col-ms-3 col-md-4 col-lg-4">プレイヤー名</th>
+                <th class="col-xs-3 col-ms-3 col-md-4 col-lg-4">アイテム名</th>
+                <th class="col-xs-3 col-ms-3 col-md-4 col-lg-4">所持個数</th>
             </tr>
             </thead>
             <tbody>
@@ -27,12 +27,9 @@
                     <th>{{$pos['item_name']}}</th>
                     <th>{{$pos['item_num']}}</th>
                 </tr>
-        @endforeach
+            @endforeach
+            </tbody>
+        </table>
     </ul>
-    <div class="col-md-3 text-end">
-        <form method="POST" action="{{url('auth/doLogout')}}">
-            @csrf
-            <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
-        </form>
-    </div>
+    
 @endsection

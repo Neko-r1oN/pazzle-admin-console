@@ -1,5 +1,5 @@
 @extends('layouts')
-@section('title','アカウント作成画面')
+@section('title','アカウント登録')
 @section('body')
     <form class="create h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0"
           method="POST"
@@ -7,9 +7,7 @@
         @csrf
         <div class="container">
             <div class="row">
-                <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-                    アカウント登録</h1>
-
+                
 
                 <input type="text" name="name" id="name" class="form-control" placeholder="ユーザー名" required="">
 

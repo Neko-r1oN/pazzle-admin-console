@@ -37,9 +37,11 @@
             //メールリスト表示
             Route::get('mails', [AccountController::class, 'mailList'])->name('mails.index');
             #メール送信画面表示
-            Route::get('send', [MailController::class, 'index'])->name('send');
+            Route::get('send', [MailController::class, 'index'])->name('send.index');
 
             Route::post('sent', [MailController::class, 'sent'])->name('sent');
+
+            Route::get('sentView', [MailController::class, 'sentView'])->name('sent.index');
         });
 
         Route::prefix('accounts')->name('accounts.')->controller(AccountController::class)

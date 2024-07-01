@@ -1,5 +1,5 @@
 @extends('layouts')
-@section('title','アカウント更新画面')
+@section('title','パスワード更新')
 @section('body')
     <div class="container">
         <header
@@ -7,7 +7,6 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
-                <h1>パスワード更新</h1>
 
                 <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="accounts" class="nav-link px-2">account</a></li>

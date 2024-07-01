@@ -1,7 +1,7 @@
 @extends('layouts')
-@section('title','アイテム一覧表示画面')
+@section('title','アイテム一覧')
 @section('body')
-    <h1>アイテム一覧</h1>
+
     <ul>
         <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="accounts" class="nav-link px-2">account</a></li>
@@ -31,10 +31,5 @@
                 </tr>
         @endforeach
     </ul>
-    <div class="col-md-3 text-end">
-        <form method="POST" action="{{url('auth/doLogout')}}">
-            @csrf
-            <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
-        </form>
-    </div>
+    
 @endsection

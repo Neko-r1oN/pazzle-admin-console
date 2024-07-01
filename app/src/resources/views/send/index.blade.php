@@ -1,11 +1,10 @@
 @extends('layouts')
-@section('title','メール作成画面')
+@section('title','メール送信')
 @section('body')
 
     <div class="container">
         <div class="row">
-            <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">メール送信
-            </h1>
+            
 
             <form method="post" action="{{route('sent')}}">
                 @csrf

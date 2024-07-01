@@ -1,7 +1,7 @@
 @extends('layouts')
-@section('title','メール一覧表示画面')
+@section('title','送付メール一覧')
 @section('body')
-    <h1>送付メール一覧</h1>
+
     <ul>
         <ul class="nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="accounts" class="nav-link px-2">account</a></li>
@@ -43,10 +43,7 @@
         @endforeach
     </ul>
     <div class="col-md-3 text-end">
-        <form method="POST" action="{{url('auth/doLogout')}}">
-            @csrf
-            <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
-        </form>
+       
         <form method="GET" action="{{url('send')}}">
             @csrf
             <button type="submit" class="btn btn-outline-primary me-2">新規作成</button>
