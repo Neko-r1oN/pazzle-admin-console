@@ -50,7 +50,7 @@
         {//
 
             //テーブルの全てのレコードを取得
-            $users = User::all();
+            $users = User::paginate(10);;
             return view('users.index', ['users' => $users]);
 
         }
@@ -134,7 +134,7 @@
             $account->password = Hash::make($request->password);
             $account->save();
 
-            return redirect()->route('accounts.index', ['name' => $account->name]);
+            return redirect()->route('index', ['name' => $account->name]);
 
         }
 
@@ -185,6 +185,6 @@
             $account = Account::findOrFail($request->id);
             $account->delete();
 
-            return redirect()->route('accounts.index', ['deleted' => $account->name]);
+            return redirect()->route('index', ['deleted' => $account->name]);
         }
     }

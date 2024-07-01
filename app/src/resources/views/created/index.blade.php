@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Account List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-<html lang="ja">
-<?php
-    //
-    //ログインページ表示
-    //2024/05/28 川口京佑
-    //
-?>
+@extends('layouts')
+@section('title','アカウント作成完了画面')
+@section('body')
 
-<html lang="ja">
-<form class=" h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0" method="get"
-      action="{{url('accounts.index')}}">
-    @csrf
-    <div class="container">
-        <div class="row">
-            <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
-                アカウント登録</h1>
+    <form class=" h3   font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0" method="get"
+          action="{{url('accounts.index')}}">
+        @csrf
+        <div class="container">
+            <div class="row">
+                <h1 class="h3  font-weight-normal nav col-18 col-md-auto mb-2 justify-content-center mb-md-0">
+                    アカウント登録</h1>
 
-            <h1>登録完了しました</h1>
+                <h1>登録完了しました</h1>
+            </div>
         </div>
-
-
-    </div>
-
-
-</form>
-<form method="get" action="{{route('accounts.index')}}">
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit" name="action">もどる</button>
-
-</form>
-
-</body>
-</html>
+    </form>
+    <form method="get" action="{{route('index')}}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="action">もどる</button>
+    </form>
+@endsection

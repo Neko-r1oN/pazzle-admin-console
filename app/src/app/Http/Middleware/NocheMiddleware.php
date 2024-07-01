@@ -6,14 +6,18 @@
     use Illuminate\Http\Request;
     use Symfony\Component\HttpFoundation\Response;
 
-    class AuthMiddleware
+    class NocheMiddleware
     {
+        /**
+         * Handle an incoming request.
+         *
+         * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+         */
         public function handle(Request $request, Closure $next): Response
         {
-            if (!$request->session()->exists('login')) {
-                return redirect()->route('login.index');
-            }
             $responce = $next($request);
+            $responce->withHeaders(['Cache-Control' => 'no-store', 'must-age' => 0]);
             return $responce;
         }
     }
+

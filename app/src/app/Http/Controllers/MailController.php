@@ -8,7 +8,7 @@
     use App\Models\Mail;
     use App\Models\OpenMail;
     use App\Models\User;
-    use http\Env\Request;
+    use Illuminate\Http\Request;
 
 
     class MailController extends Controller
@@ -37,6 +37,6 @@
             //入力情報をDBに挿入
             OpenMail::create(['user_id' => $request['user_id'], 'mail_id' => $request['mail_id'], 'isOpen' => false]);
 
-            return redirect()->route('send');
+            return redirect()->route('accounts.index');
         }
     }
