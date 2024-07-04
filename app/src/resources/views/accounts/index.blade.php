@@ -8,7 +8,9 @@
             <li><a href="users" class="nav-link px-2  ">user</a></li>
             <li><a href="items" class="nav-link px-2 ">items</a></li>
             <li><a href="posItems" class="nav-link px-2">posItems</a></li>
-            <li><a href="mails" class="nav-link px-2">mails</a></li>
+            <li><a href="mails" class="nav-link px-2  link-">mails</a></li>
+            <li><a href="posMails" class="nav-link px-2">posMails</a></li>
+            <li><a href="followList" class="nav-link px-2 ">followList</a></li>
         </ul>
         <div class="form-group">
             <input
@@ -46,12 +48,11 @@
         @endforeach
     </ul>
     <div class="col-md-3 text-end">
-       
+
 
         <form method="GET" action="{{url('accounts/create')}}">
             @csrf
             <button type="submit" class="btn btn-outline-primary me-2">新規登録</button>
         </form>
-    </div>
     </div>
 @endsection

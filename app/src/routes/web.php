@@ -3,6 +3,7 @@
     use App\Http\Controllers\AccountController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\MailController;
+    use App\Http\Controllers\UserController;
     use App\Http\Middleware\AuthMiddleware;
     use App\Http\Middleware\NocheMiddleware;
     use Illuminate\Support\Facades\Route;
@@ -34,8 +35,13 @@
             Route::get('items', [AccountController::class, 'itemList'])->name('items.index');
             //所持アイテムリスト表示
             Route::get('posItems', [AccountController::class, 'posItemList'])->name('posItems.index');
-            //メールリスト表示
+            //マスターメールリスト表示
             Route::get('mails', [AccountController::class, 'mailList'])->name('mails.index');
+            //メールリスト表示
+            Route::get('posMails', [AccountController::class, 'posMailList'])->name('posMails.index');
+            //ユーザーフォローリスト表示
+            Route::get('followList', [UserController::class, 'followList'])->name('follows.index');
+
             #メール送信画面表示
             Route::get('send', [MailController::class, 'index'])->name('send.index');
 

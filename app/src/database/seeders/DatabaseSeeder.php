@@ -2,6 +2,7 @@
 
     namespace Database\Seeders;
 
+    use App\Models\Follow;
     use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,5 +19,6 @@
             $this->call(PosItemTableSeeder::class);
             $this->call(MailTableSeeder::class);
             $this->call(OpenMailsTableSeeder::class);
+            $this->call(FollowsTableSeeder::class);
         }
     }

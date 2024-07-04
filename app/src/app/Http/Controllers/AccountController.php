@@ -50,7 +50,11 @@
         {//
 
             //テーブルの全てのレコードを取得
-            $users = User::paginate(10);;
+            $users = User::paginate(10);
+
+            //$userI = User::find(1);
+
+
             return view('users.index', ['users' => $users]);
 
         }
@@ -74,17 +78,32 @@
                 ->join('users', 'pos_items.user_id', '=', 'users.id')
                 ->join('items', 'pos_items.item_id', '=', 'items.id')
                 ->get();
+
+
             return view('posItems/index', ['posItems' => $posItems]);
 
 
         }
 
-        //メールリスト表示
         public function mailList(Request $request)
         {//
 
             //必要なレコードを取得
-            $mails = OpenMail::select('open_mails.id', 'users.name as user_name', 'mails.title as mail_title',
+            $mails = Mail::select('mails.id', 'mails.title as mail_title', 'mails.message as mail_message',
+                'items.name as item_name', 'mails.item_num')
+                ->join('items', 'mails.item_id', '=', 'items.id')
+                ->get();
+            return view('mails/index', ['mails' => $mails]);
+
+
+        }
+
+        //メールリスト表示
+        public function posMailList(Request $request)
+        {//
+
+            //必要なレコードを取得
+            $posMails = OpenMail::select('open_mails.id', 'users.name as user_name', 'mails.title as mail_title',
                 'mails.message as mail_message',
                 'items.name as item_name', 'mails.item_num', 'open_mails.isOpen')
                 ->join('users', 'open_mails.user_id', '=', 'users.id')
@@ -93,11 +112,12 @@
                 ->get();
 
 
-            return view('mails/index', ['mails' => $mails]);
+            return view('posMails/index', ['posMails' => $posMails]);
 
 
         }
 
+       
         //アカウント登録画面表示
         public function showCreate(Request $request)
         {

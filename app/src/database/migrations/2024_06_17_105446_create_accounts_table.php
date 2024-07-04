@@ -25,6 +25,7 @@
 
         }
 
+
         /**
          * Reverse the migrations.
          */

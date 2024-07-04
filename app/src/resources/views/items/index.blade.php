@@ -8,7 +8,9 @@
             <li><a href="users" class="nav-link px-2 ">user</a></li>
             <li><a href="items" class="nav-link px-2  link-secondary">items</a></li>
             <li><a href="posItems" class="nav-link px-2">posItems</a></li>
-            <li><a href="mails" class="nav-link px-2">mails</a></li>
+            <li><a href="mails" class="nav-link px-2  link-">mails</a></li>
+            <li><a href="posMails" class="nav-link px-2">posMails</a></li>
+            <li><a href="followList" class="nav-link px-2 ">followList</a></li>
         </ul>
         <table class="table">
             <thead class="table-dark">
@@ -31,5 +33,5 @@
                 </tr>
         @endforeach
     </ul>
-    
+
 @endsection
