@@ -13,6 +13,8 @@
                 $table->integer('mail_id'); //mailID
                 $table->boolean('isOpen');  //開封判定
                 $table->timestamps();
+
+                $table->index('user_id');             //nameにindex設定
             });
         }
 

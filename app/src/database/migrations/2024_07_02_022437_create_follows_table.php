@@ -12,6 +12,8 @@
                 $table->integer('send_user_id'); //userID
                 $table->integer('follow_user_id'); //mailID
                 $table->timestamps();
+
+                $table->unique(['send_user_id', 'follow_user_id']);
             });
         }
 
