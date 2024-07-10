@@ -52,7 +52,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 3
+    "user_id": 4
 }
 
 ###ユーザー所持アイテム情報更新
@@ -62,10 +62,8 @@ Accept: application/json
 
 {
     "user_id": 1,
-    "get_item_id": 3,
-    "get_item_num": 210,
-    "used_item_id": 1,
-    "used_item_num": 1
+    "change_item_id": 3,
+    "change_item_num": 10
 }
 
 ###ユーザーフォロー情報追加
@@ -75,7 +73,7 @@ Accept: application/json
 
 {
     "follow_user_id": 3,
-    "follower_user_id": 1
+    "follower_user_id": 52
 }
 
 ###ユーザーフォロー情報削除
@@ -84,7 +82,16 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "unfollow_user_id": 1,
-    "follower_user_id": 3
+    "unfollow_user_id": 3,
+    "follower_user_id": 52
 }
 
+###ユーザーメール開封更新
+POST http://localhost:8000/api/users/mailUpdate
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": 1,
+    "mail_id": 1
+}

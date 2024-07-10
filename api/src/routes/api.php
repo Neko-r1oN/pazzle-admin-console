@@ -61,3 +61,7 @@
     //ユーザーフォロー情報削除
     Route::post('users/unfollow', [UserController::class, 'unfollow'])
         ->name('unfollow');
+
+    //ユーザーフォロー情報削除
+    Route::post('users/mailUpdate', [UserController::class, 'mailUpdate'])
+        ->name('mailUpdate');

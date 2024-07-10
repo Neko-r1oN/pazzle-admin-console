@@ -23,5 +23,13 @@
                 'item_num' => 12000,
 
             ]);
+            Mail::create([
+
+                'title' => 'フレンド機能について',
+                'message' => 'ハートが贈れます。',
+                'item_id' => 2,
+                'item_num' => 10,
+
+            ]);
         }
     }

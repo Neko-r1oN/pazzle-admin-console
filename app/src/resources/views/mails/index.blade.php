@@ -35,12 +35,6 @@
 
         @endforeach
     </ul>
-    <div class="col-md-3 text-end">
-
-        <form method="GET" action="{{url('send')}}">
-            @csrf
-            <button type="submit" class="btn btn-outline-primary me-2">新規作成</button>
-        </form>
-    </div>
+    
 @endsection
 
