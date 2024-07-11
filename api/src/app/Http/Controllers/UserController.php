@@ -143,19 +143,21 @@
             $posItem = PosItem::where('user_id', '=', $request->user_id)
                 ->where('item_id', $request->change_item_id)->first();
 
+
             //指定ユーザーが該当アイテムを所持していなかった・アイテム変動値が正数だった場合
-            if (empty($posItem) && $request->change_item_id > 0) {
+            if (empty($posItem) && $request->change_item_num > 0) {
                 $posItem = PosItem::create([
                     'user_id' => $request->user_id,
-                    'item_id' => $request->get_item_id,
-                    'item_num' => $request->get_item_num,
+                    'item_id' => $request->change_item_id,
+                    'item_num' => $request->change_item_num,
                 ]);
                 return response()->json(['id' => $posItem->id]);
             }//該当アイテムを所持していなかったが、アイテム変動値が負数だった場合
-            elseif (empty($posItem) && $request->change_item_id > 0) {
-                abort(400);
-            }
+            elseif (empty($posItem) && $request->change_item_id <= 0) {
 
+                return response()->json([], 400);
+                /*abort(400);*/
+            }
             //アイテムの合計値が０以上だった場合
             if ($posItem->item_num + $request->change_item_num >= 0) {
                 $posItem->item_num += $request->change_item_num;

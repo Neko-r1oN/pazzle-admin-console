@@ -63,7 +63,7 @@ Accept: application/json
 {
     "user_id": 1,
     "change_item_id": 3,
-    "change_item_num": 10
+    "change_item_num": 100
 }
 
 ###ユーザーフォロー情報追加
