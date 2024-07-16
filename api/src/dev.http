@@ -33,7 +33,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "jobi999"
+    "name": "jobi9999"
 }
 
 ###ユーザー更新
@@ -63,7 +63,7 @@ Accept: application/json
 {
     "user_id": 1,
     "change_item_id": 3,
-    "change_item_num": 100
+    "change_item_num": 10
 }
 
 ###ユーザーフォロー情報追加
@@ -92,6 +92,6 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 1,
+    "user_id": 2,
     "mail_id": 1
 }

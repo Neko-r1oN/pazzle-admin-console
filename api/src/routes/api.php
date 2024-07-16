@@ -47,7 +47,7 @@
     Route::post('users/update', [UserController::class, 'update'])
         ->name('update');
 
-    //ユーザー情報更新
+    //ユーザー所持アイテム情報更新
     Route::post('users/posItemUpdate', [UserController::class, 'posItemUpdate'])
         ->name('posItemUpdate');
 
@@ -62,6 +62,6 @@
     Route::post('users/unfollow', [UserController::class, 'unfollow'])
         ->name('unfollow');
 
-    //ユーザーフォロー情報削除
+    //ユーザーメール情報更新
     Route::post('users/mailUpdate', [UserController::class, 'mailUpdate'])
         ->name('mailUpdate');
