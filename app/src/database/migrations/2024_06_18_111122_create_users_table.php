@@ -23,6 +23,7 @@
                 $table->integer('life'); //passwordカラム(100文字)
                 $table->timestamps();                         //created_at,updated_at
 
+                $table->index('id');             //idにindex設定
                 $table->index('name');             //nameにindex設定
                 $table->unique('name');           //nameにunique制約設定
             });

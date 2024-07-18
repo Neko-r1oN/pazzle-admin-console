@@ -6,6 +6,7 @@
     use App\Http\Controllers\Controller;
     use App\Models\Login;
     use App\Models\Mail;
+    use App\Models\mailLog;
     use App\Models\OpenMail;
     use App\Models\User;
     use Illuminate\Http\Request;
@@ -37,6 +38,12 @@
             //入力情報をDBに挿入
             OpenMail::create(['user_id' => $request['user_id'], 'mail_id' => $request['mail_id'], 'isOpen' => false]);
 
+            //ログ生成
+            MailLog::create([
+                'open_user_id' => $request->user_id,
+                'open_mail_id' => $request->mail_id,
+                'action' => 1,
+            ]);
             return redirect()->route('sent.index');
         }
 

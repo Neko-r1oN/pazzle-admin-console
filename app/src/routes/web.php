@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\AccountController;
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\LogController;
     use App\Http\Controllers\MailController;
     use App\Http\Controllers\UserController;
     use App\Http\Middleware\AuthMiddleware;
@@ -41,6 +42,14 @@
             Route::get('posMails', [AccountController::class, 'posMailList'])->name('posMails.index');
             //ユーザーフォローリスト表示
             Route::get('followList', [UserController::class, 'followList'])->name('follows.index');
+
+            //アイテムログ表示
+            Route::get('itemLogs', [LogController::class, 'itemLogs'])->name('itemLogs.index');
+            //アイテムログ表示
+            Route::get('followLogs', [LogController::class, 'followLogs'])->name('followLogs.index');
+            //アイテムログ表示
+            Route::get('mailLogs', [LogController::class, 'mailLogs'])->name('mailLogs.index');
+
 
             #メール送信画面表示
             Route::get('send', [MailController::class, 'index'])->name('send.index');

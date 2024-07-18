@@ -20,5 +20,6 @@
             $this->call(MailTableSeeder::class);
             $this->call(OpenMailsTableSeeder::class);
             $this->call(FollowsTableSeeder::class);
+            
         }
     }

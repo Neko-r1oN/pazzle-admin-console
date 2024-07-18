@@ -49,6 +49,14 @@
                         メール
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('itemLogs.index') }}" class="nav-link">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        ログ
+                    </a>
+                </li>
 
                 <a
                     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">

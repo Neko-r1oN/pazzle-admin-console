@@ -11,6 +11,9 @@
     use App\Models\OpenMail;
     use App\Models\PosItem;
     use App\Models\User;
+    use App\Models\ItemLog;
+    use App\Models\FollowLog;
+    use App\Models\MailLog;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Validator;
@@ -159,11 +162,17 @@
                             'item_id' => $request->change_item_id,
                             'item_num' => $request->change_item_num,
                         ]);
+
+                        //ログ生成
+                        ItemLog::create([
+                            'get_user_id' => $request->user_id,
+                            'get_item_id' => $request->change_item_id,
+                            'get_item_num' => $request->change_item_num,
+                        ]);
                         return response()->json(['id' => $posItem->id]);
-                    } //該当アイテムを所持していなかったが、アイテム変動値が負数だった場合
-                    elseif (empty($posItem) && $request->change_item_id <= 0) {
+                    } //該当アイテムを所持しておらず、アイテム変動値が負数だった場合
+                    elseif (empty($posItem) && $request->change_item_num <= 0) {
                         return response()->json([], 400);
-                        /*abort(400);*/
                     }
 
                     //アイテムの合計値が０以上だった場合
@@ -213,6 +222,13 @@
                 'follow_user_id' => $request->follower_user_id
             ]);
 
+            //ログ生成
+            FollowLog::create([
+                'follow_user_id' => $request->follow_user_id,
+                'follower_user_id' => $request->follower_user_id,
+                'action' => 1,
+            ]);
+
             return response()->json(['id' => $follow->id]);
         }
 
@@ -230,6 +246,13 @@
             //削除対象のレコードを検索して削除
             Follow::where('send_user_id', '=', $request->unfollow_user_id)
                 ->where('follow_user_id', '=', $request->follower_user_id)->delete();
+
+            //ログ生成
+            FollowLog::create([
+                'follow_user_id' => $request->unfollow_user_id,
+                'follower_user_id' => $request->follower_user_id,
+                'action' => 0,
+            ]);
 
             return response()->json();
         }
@@ -273,6 +296,13 @@
                             'user_id' => $request->user_id,
                             'item_id' => $userMail->item_id,
                             'item_num' => $userMail->item_num,
+                        ]);
+
+                        //ログ生成
+                        MailLog::create([
+                            'open_user_id' => $request->user_id,
+                            'open_mail_id' => $request->mail_id,
+                            'action' => 0,
                         ]);
                     } //すでに所持していた場合
                     else {
