@@ -50,6 +50,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('achieves.index') }}" class="nav-link">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#table"></use>
+                        </svg>
+                        アチーブメント
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('itemLogs.index') }}" class="nav-link">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#table"></use>

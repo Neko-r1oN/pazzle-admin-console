@@ -34,7 +34,7 @@
                     <td>{{$mail['item_name']}}</td>
                     <td>{{$mail['item_num']}}</td>
                     <td>
-                        @if($mail['isOpen'] === true)
+                        @if($mail['isOpen'] === 1)
                             開封済み
                         @else
                             未開封

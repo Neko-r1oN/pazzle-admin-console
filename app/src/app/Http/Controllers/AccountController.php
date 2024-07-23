@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Models\Account;
+    use App\Models\Achieve;
     use App\Models\User;
     use App\Models\Item;
     use App\Models\PosItem;
@@ -113,11 +114,19 @@
 
 
             return view('posMails/index', ['posMails' => $posMails]);
+        }
+
+        public function achieveList(Request $request)
+        {//
+
+            //テーブルの全てのレコードを取得
+            $achieves = Achieve::all();
+            return view('achieves/index', ['achieves' => $achieves]);
 
 
         }
 
-       
+
         //アカウント登録画面表示
         public function showCreate(Request $request)
         {

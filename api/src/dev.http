@@ -6,6 +6,10 @@ Accept: application/json
 GET http://localhost:8000/api/users?min_level=5&max_level=8
 Accept: application/json
 
+###ユーザー一覧取得(サーバー)
+GET http://48.218.28.94/api/users?min_level=5&max_level=8
+Accept: application/json
+
 ###アイテム一覧取得
 GET http://localhost:8000/api/itemList
 Accept: application/json

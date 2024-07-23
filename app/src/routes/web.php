@@ -43,6 +43,8 @@
             //ユーザーフォローリスト表示
             Route::get('followList', [UserController::class, 'followList'])->name('follows.index');
 
+            Route::get('achieveList', [AccountController::class, 'achieveList'])->name('achieves.index');
+
             //アイテムログ表示
             Route::get('itemLogs', [LogController::class, 'itemLogs'])->name('itemLogs.index');
             //アイテムログ表示
