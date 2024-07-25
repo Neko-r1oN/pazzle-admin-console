@@ -20,6 +20,7 @@
             <tr>
                 <th>No</th>
                 <th>名前</th>
+                <th>パスワード</th>
                 <th>レベル</th>
                 <th>経験値</th>
                 <th>ライフ</th>
@@ -32,6 +33,7 @@
                 <tr>
                     <th>{{$user['id']}}</th>
                     <th>{{$user['name']}}</th>
+                    <th>{{$user['password']}}</th>
                     <th>{{$user['level']}}</th>
                     <th>{{$user['exp']}}</th>
                     <th>{{$user['life']}}</th>

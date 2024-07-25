@@ -23,6 +23,7 @@
             return [
                 'name' => $this->faker->unique()->name(),
                 'level' => $this->faker->numberBetween(1, 100),
+                'password' => $this->faker->password(),
                 'exp' => $this->faker->randomNumber(5),
                 'life' => $this->faker->randomNumber(1),
                 'created_at' => $scheduled_Date->format('Y-m-d H:i:s'),

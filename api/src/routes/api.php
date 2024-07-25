@@ -16,6 +16,11 @@
         ->get('users', [UserController::class, 'index'])
         ->name('users');
 
+    //指定ユーザー取得
+    Route::middleware(NocheMiddleware::class)
+        ->get('login/{user_id}', [UserController::class, 'login'])
+        ->name('login');
+
     //アイテム一覧取得
     Route::middleware(NocheMiddleware::class)
         ->get('itemList', [ItemController::class, 'showItemList'])
@@ -39,6 +44,10 @@
         ->get('userFollows/{user_id}', [UserController::class, 'userFollows'])
         ->name('users.userFollows');
 
+    //アイテム一覧取得
+    Route::middleware(NocheMiddleware::class)
+        ->get('achieveList', [UserController::class, 'achieves'])
+        ->name('achieveList');
     //ユーザー登録
     Route::post('users/store', [UserController::class, 'store'])
         ->name('store');

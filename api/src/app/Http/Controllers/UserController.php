@@ -2,12 +2,14 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Resources\AchieveResource;
     use App\Http\Resources\PosMailResource;
     use App\Http\Resources\UserFollowResource;
     use App\Http\Resources\UserItemsResource;
     use App\Http\Resources\UserResource;
     use App\Models\Follow;
     use App\Models\Mail;
+    use App\Models\Achieve;
     use App\Models\OpenMail;
     use App\Models\PosItem;
     use App\Models\User;
@@ -90,12 +92,21 @@
             return response()->json($response, 200);
         }
 
+        public function achieves(Request $request)
+        {
+            //テーブルの全てのレコードを取得
+            $achieves = Achieve::all();
+
+            return response()->json(AchieveResource::collection($achieves), 200);
+        }
+
         //ユーザー新規登録
         public function store(Request $request)
         {
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
                 'name' => ['required', 'string'],
+                'password' => ['required', 'string', 'min:6', 'regex:/^[a-zA-Z0-9]+$/'],
             ]);
             //リクエストボディの指定に不備があった場合
             if ($validator->fails()) {
@@ -104,6 +115,7 @@
             //新規ユーザー作成
             $user = User::create([
                 'name' => $request->name,
+                'password' => $request->password,
                 'level' => 1,
                 'exp' => 0,
                 'life' => 1,

@@ -18,6 +18,7 @@
             Schema::create('users', function (Blueprint $table) {
                 $table->id();                                 //IDカラム
                 $table->string('name', 20);      //nameカラム(20文字)
+                $table->string('password'); //passwordカラム(100文字)
                 $table->integer('level'); //passwordカラム(100文字)
                 $table->integer('exp'); //passwordカラム(100文字)
                 $table->integer('life'); //passwordカラム(100文字)
