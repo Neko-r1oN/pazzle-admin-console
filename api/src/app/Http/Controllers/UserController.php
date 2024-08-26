@@ -57,6 +57,23 @@
             );
         }
 
+        //指定ユーザー情報取得
+        public function login(Request $request)
+        {
+            $user = User::findOrFail($request->user_id);
+            $response = [
+                "detail" => $user
+            ];
+            if ($user) {
+                return response()->json($response, 200);
+            } else {
+                return response()->json([], 500);
+            }
+
+
+        }
+
+
         //ユーザー所持アイテム取得
         public function userItems(Request $request)
         {
@@ -106,7 +123,7 @@
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
                 'name' => ['required', 'string'],
-                'password' => ['required', 'string', 'min:6', 'regex:/^[a-zA-Z0-9]+$/'],
+                'password' => ['required', 'string', 'min:6'],
             ]);
             //リクエストボディの指定に不備があった場合
             if ($validator->fails()) {
