@@ -113,8 +113,10 @@
         {
             //テーブルの全てのレコードを取得
             $stages = Stage::all();
-
-            return response()->json(StageResource::collection($stages), 200);
+            $response = [
+                "detail" => $stages,
+            ];
+            return response()->json($response, 200);
         }
 
         //ユーザー新規登録

@@ -14,9 +14,6 @@ Accept: application/json
 GET http://localhost:8000/api/login/1
 Accept: application/json
 
-
-
-
 ###アイテム一覧取得
 GET http://48.218.28.94/api/itemList
 Accept: application/json
@@ -25,8 +22,8 @@ Accept: application/json
 GET http://48.218.28.94/api/stageList
 Accept: application/json
 
-###指定ユーザー所持アイテム情報取得http://48.218.28.94
-GET http://localhost:8000/api/userItems/1
+###指定ユーザー所持アイテム情報取得
+GET http://48.218.28.94/api/userItems/1
 Accept: application/json
 
 ###マスターメール一覧取得
@@ -40,11 +37,6 @@ Accept: application/json
 ###指定ユーザーフォロー情報取得
 GET http://48.218.28.94/api/userFollows/1
 Accept: application/json
-
-###アチーブ一覧取得
-GET http://48.218.28.94/api/achieveList
-Accept: application/json
-
 
 ###ユーザー登録
 POST http://48.218.28.94/api/users/store
