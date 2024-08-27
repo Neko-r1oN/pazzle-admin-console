@@ -9,8 +9,7 @@
         {
             Schema::create('stages', function (Blueprint $table) {
                 $table->id();
-                $table->integer('merge_num'); //userID
-                $table->text('goal_text'); //itemID
+                $table->text('stage_name'); //itemID
                 $table->timestamps();
 
                 $table->index('id');             //idにindex設定

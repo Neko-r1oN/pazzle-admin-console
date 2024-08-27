@@ -21,8 +21,12 @@ Accept: application/json
 GET http://48.218.28.94/api/itemList
 Accept: application/json
 
-###指定ユーザー所持アイテム情報取得
-GET http://48.218.28.94/api/userItems/1
+###ステージ一覧取得
+GET http://48.218.28.94/api/stageList
+Accept: application/json
+
+###指定ユーザー所持アイテム情報取得http://48.218.28.94
+GET http://localhost:8000/api/userItems/1
 Accept: application/json
 
 ###マスターメール一覧取得
@@ -48,8 +52,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "jobi9999",
-    "password": "jobi9999"
+    "name": "test1234",
+    "password": "test1234"
 }
 
 ###ユーザー更新

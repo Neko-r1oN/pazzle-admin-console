@@ -25,6 +25,12 @@
     Route::middleware(NocheMiddleware::class)
         ->get('itemList', [ItemController::class, 'showItemList'])
         ->name('itemList');
+
+    //ステージ一覧取得
+    Route::middleware(NocheMiddleware::class)
+        ->get('stageList', [UserController::class, 'stages'])
+        ->name('stageList');
+
     //指定ユーザー所持アイテム一覧取得
     Route::middleware(NocheMiddleware::class)
         ->get('userItems/{user_id}', [UserController::class, 'userItems'])
@@ -44,10 +50,6 @@
         ->get('userFollows/{user_id}', [UserController::class, 'userFollows'])
         ->name('users.userFollows');
 
-    //アイテム一覧取得
-    Route::middleware(NocheMiddleware::class)
-        ->get('achieveList', [UserController::class, 'achieves'])
-        ->name('achieveList');
     //ユーザー登録
     Route::post('users/store', [UserController::class, 'store'])
         ->name('store');

@@ -21,7 +21,7 @@
             $this->call(MailTableSeeder::class);
             $this->call(OpenMailsTableSeeder::class);
             $this->call(FollowsTableSeeder::class);
-            $this->call(AchievesSeeder::class);
-            
+            $this->call(StagesTableSeeder::class);
+
         }
     }

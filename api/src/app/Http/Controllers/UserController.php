@@ -2,14 +2,14 @@
 
     namespace App\Http\Controllers;
 
-    use App\Http\Resources\AchieveResource;
+    use App\Http\Resources\StageResource;
     use App\Http\Resources\PosMailResource;
     use App\Http\Resources\UserFollowResource;
     use App\Http\Resources\UserItemsResource;
     use App\Http\Resources\UserResource;
     use App\Models\Follow;
     use App\Models\Mail;
-    use App\Models\Achieve;
+    use App\Models\Stage;
     use App\Models\OpenMail;
     use App\Models\PosItem;
     use App\Models\User;
@@ -109,12 +109,12 @@
             return response()->json($response, 200);
         }
 
-        public function achieves(Request $request)
+        public function stages(Request $request)
         {
             //テーブルの全てのレコードを取得
-            $achieves = Achieve::all();
+            $stages = Stage::all();
 
-            return response()->json(AchieveResource::collection($achieves), 200);
+            return response()->json(StageResource::collection($stages), 200);
         }
 
         //ユーザー新規登録
