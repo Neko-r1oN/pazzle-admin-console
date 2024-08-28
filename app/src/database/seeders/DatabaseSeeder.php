@@ -22,6 +22,7 @@
             $this->call(OpenMailsTableSeeder::class);
             $this->call(FollowsTableSeeder::class);
             $this->call(StagesTableSeeder::class);
-
+            $this->call(ScoreAttackTableSeeder::class);
+            
         }
     }
