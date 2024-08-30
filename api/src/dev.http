@@ -23,11 +23,11 @@ GET http://48.218.28.94/api/stageList
 Accept: application/json
 
 ###指定ユーザー所持アイテム情報取得
-GET http://48.218.28.94/api/userItems/1
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/userItems/1
 Accept: application/json
 
 ###マスターメール一覧取得
-GET http://48.218.28.94/api/mailList
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/mailList
 Accept: application/json
 
 ###指定ユーザー所持メール情報取得
