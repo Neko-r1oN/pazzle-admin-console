@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\ItemController;
     use App\Http\Controllers\MailController;
+    use App\Http\Controllers\ScoreController;
     use App\Http\Controllers\UserController;
     use App\Http\Middleware\NocheMiddleware;
     use Illuminate\Http\Request;
@@ -76,3 +77,15 @@
     //ユーザーメール情報更新
     Route::post('users/mailUpdate', [UserController::class, 'mailUpdate'])
         ->name('mailUpdate');
+
+    //スコアランキング一覧取得
+    Route::post('users/scoreRanking', [ScoreController::class, 'index'])
+        ->name('scoreRanking');
+
+    //スコア順位取得
+    Route::post('users/getRank', [ScoreController::class, 'getRank'])
+        ->name('getRank');
+
+    //スコア情報登録
+    Route::post('users/sendScore', [ScoreController::class, 'sendScore'])
+        ->name('sendScore');

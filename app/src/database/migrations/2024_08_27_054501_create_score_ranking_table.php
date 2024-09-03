@@ -7,9 +7,10 @@
     return new class extends Migration {
         public function up(): void
         {
-            Schema::create('score_attacks', function (Blueprint $table) {
+            Schema::create('score_rankings', function (Blueprint $table) {
                 $table->id();
                 $table->integer('user_id'); //userID
+                $table->text('user_name');  //userName
                 $table->integer('score');   //ゲームスコア
                 $table->timestamps();
             });
@@ -17,6 +18,6 @@
 
         public function down(): void
         {
-            Schema::dropIfExists('score_attacks');
+            Schema::dropIfExists('score_rankings');
         }
     };

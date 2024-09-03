@@ -5,9 +5,10 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    class AchieveStats extends Model
+
+    class ScoreRanking extends Model
     {
-        use HasFactory;
+        //use HasFactory;
 
         protected $guarded = [
             'id',

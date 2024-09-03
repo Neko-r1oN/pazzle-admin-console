@@ -107,3 +107,28 @@ Accept: application/json
     "user_id": 2,
     "mail_id": 1
 }
+
+###スコアランキング一覧取得
+POST http://localhost:8000/api/users/scoreRanking
+Accept: application/json
+
+
+###スコアランキング取得(特定ユーザー)
+POST http://localhost:8000/api/users/getRank
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": 4
+}
+
+###スコアランキング登録
+POST http://localhost:8000/api/users/sendScore
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": 4,
+    "user_name": "test太郎",
+    "score": 100000
+}

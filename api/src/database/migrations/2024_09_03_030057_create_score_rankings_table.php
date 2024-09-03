@@ -7,7 +7,7 @@
     return new class extends Migration {
         public function up(): void
         {
-            Schema::create('achieves', function (Blueprint $table) {
+            Schema::create('score_rankings', function (Blueprint $table) {
                 $table->id();
                 $table->timestamps();
             });
@@ -15,6 +15,6 @@
 
         public function down(): void
         {
-            Schema::dropIfExists('achieves');
+            Schema::dropIfExists('score_rankings');
         }
     };

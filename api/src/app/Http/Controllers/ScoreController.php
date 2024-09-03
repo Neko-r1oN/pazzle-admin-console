@@ -2,7 +2,7 @@
 
     namespace App\Http\Controllers;
 
-
+    use App\Http\Resources\ScoreRankingResource;
     use App\Http\Resources\PosMailResource;
     use App\Http\Resources\UserFollowResource;
     use App\Http\Resources\UserItemsResource;
@@ -12,65 +12,120 @@
     use App\Models\Stage;
     use App\Models\OpenMail;
     use App\Models\PosItem;
-    use App\Models\User;
+    use App\Models\ScoreRanking;
     use App\Models\ItemLog;
     use App\Models\FollowLog;
     use App\Models\MailLog;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Validator;
 
-    use Illuminate\Support\Facades\DB;
 
-    class UserController extends Controller
+    class ScoreController extends Controller
     {
-
-        //ユーザー一覧取得
+        //スコアランキング一覧取得
         public function index(Request $request)
+        {
+            //指定された範囲内のユーザーのみを取得
+            $scores = ScoreRanking::all()->sortByDesc('score');
+
+            return response()->json(ScoreRankingResource::collection($scores), 200);
+        }
+
+        //指定ユーザー情報取得
+        public function getRank(Request $request)
+        {
+            //指定されたuser_idのユーザー情報を取得
+            $scores = ScoreRanking::all()->where('user_id', '=', $request->user_id);
+
+            return response()->json(ScoreRankingResource::collection($scores), 200);
+        }
+
+        //ランキング更新
+        public function sendScore(Request $request)
         {
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
-                'min_level' => ['required', 'int'],
-                'max_level' => ['required', 'int'],
+                'user_id' => ['required', 'int'],
             ]);
             //リクエストボディの指定に不備があった場合
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
-            //指定された範囲内のユーザーのみを取得
-            $users = User::all()->where('level', '>=', $request->min_level)
-                ->where('level', '<=', $request->max_level);
 
-            return response()->json(UserResource::collection($users), 200);
-        }
+            $score = ScoreRanking::/*all()->*/ where('user_id', '=', $request->user_id)->first();
+            return response()->json(ScoreRankingResource::collection($score), 200);
 
-        //指定ユーザー情報取得
-        public function show(Request $request)
-        {
-            //指定されたuser_idのユーザー情報を取得
-            $user = User::findOrFail($request->user_id);
-            $response = [
-                "detail" => $user
-            ];
-            return response()->json(
-                UserResource::make($user)
-            );
-        }
+            try {
+                //トランザクション開始
+                $data = DB::transaction(function () use ($request) {
 
-        //指定ユーザー情報取得
-        public function login(Request $request)
-        {
-            $user = User::findOrFail($request->user_id);
-            $response = [
-                "detail" => $user
-            ];
-            if ($user) {
-                return response()->json($response, 200);
-            } else {
+                    //指定されたuser_idのユーザー情報を取得
+                    //スコア状況を検索
+                    //$score = ScoreRanking::where('user_id', '=', $request->user_id)->first();
+
+
+                    //スコアが前回より高くなかった場合
+                    if ($score->score >= $request->score) {
+                        return response()->json([], 400);
+                    }
+                    //スコア未登録だった場合
+                    if (empty($score)) {
+                        //フォロー情報作成
+                        ScoreRanking::create([
+                            'user_id' => $request->user_id,
+                            'user_name' => $request->user_name,
+                            'score' => $request->score
+                        ]);
+                    }
+
+
+                    //指定ユーザー送付メール情報を取得
+                    $userMail = Mail::where('id', '=', $request->mail_id)->get()->first();
+
+                    //指定ユーザー所持アイテム情報を取得
+                    $posItem = PosItem::where('user_id', '=', $request->user_id)
+                        ->where('item_id', '=', $userMail->item_id)->get();
+
+                    //所持アイテム更新
+                    //テーブル内に指定したアイテムIDが記録されていなかった場合
+                    if (count($posItem) <= 0) {
+
+                        PosItem::create([
+                            'user_id' => $request->user_id,
+                            'item_id' => $userMail->item_id,
+                            'item_num' => $userMail->item_num,
+                        ]);
+
+                        //ログ生成
+                        MailLog::create([
+                            'open_user_id' => $request->user_id,
+                            'open_mail_id' => $request->mail_id,
+                            'action' => 0,
+                        ]);
+                    } //すでに所持していた場合
+                    else {
+                        //所持分と追加分のアイテムの合計値が０以上だったら
+                        if ($userMail->first()->item_num + $posItem->first()->item_num >= 0) {
+                            $posItem->first()->item_num += $userMail->first()->item_num;    //加算
+                        }//アイテムの合計値が０以下だった場合
+                        else {
+                            $posItem->first()->item_num = 0;
+                        }
+                        $posItem->first()->save();
+                    }
+                    //開封済みにする
+                    $mail->isOpen = 0;
+                    $mail->save();
+
+                });
+                return response()->json($data);
+
+            }  //通信中に予期せぬエラーが発生した場合
+            catch (\Exception $e) {
                 return response()->json([], 500);
             }
-
-
         }
 
 

@@ -2,7 +2,6 @@
 
     namespace Database\Seeders;
 
-    use App\Models\AchieveStatus;
     use App\Models\Follow;
     use App\Models\User;
 
@@ -22,7 +21,7 @@
             $this->call(OpenMailsTableSeeder::class);
             $this->call(FollowsTableSeeder::class);
             $this->call(StagesTableSeeder::class);
-            $this->call(ScoreAttackTableSeeder::class);
-            
+            $this->call(ScoreRankingTableSeeder::class);
+
         }
     }
