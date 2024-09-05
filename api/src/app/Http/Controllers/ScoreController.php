@@ -28,7 +28,7 @@
         public function index(Request $request)
         {
             //指定された範囲内のユーザーのみを取得
-            $scores = ScoreRanking::all()->sortByDesc('score');
+            $scores = ScoreRanking::all()->sortByDesc('score')->take(100);
 
             return response()->json(ScoreRankingResource::collection($scores), 200);
         }
@@ -37,9 +37,9 @@
         public function getRank(Request $request)
         {
             //指定されたuser_idのユーザー情報を取得
-            $scores = ScoreRanking::all()->where('user_id', '=', $request->user_id);
+            $scores = ScoreRanking::where('user_id', '=', $request->user_id)->first();
 
-            return response()->json(ScoreRankingResource::collection($scores), 200);
+            return response()->json($scores, 200);
         }
 
         //ランキング更新
@@ -48,77 +48,53 @@
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
                 'user_id' => ['required', 'int'],
+                "user_name" => ['required', 'string'],
+                "score" => ['required', 'int']
             ]);
             //リクエストボディの指定に不備があった場合
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
 
-            $score = ScoreRanking::/*all()->*/ where('user_id', '=', $request->user_id)->first();
-            return response()->json(ScoreRankingResource::collection($score), 200);
 
             try {
                 //トランザクション開始
                 $data = DB::transaction(function () use ($request) {
-
-                    //指定されたuser_idのユーザー情報を取得
                     //スコア状況を検索
-                    //$score = ScoreRanking::where('user_id', '=', $request->user_id)->first();
+                    $score = ScoreRanking::where('user_id', '=', $request->user_id)->first();
 
-
-                    //スコアが前回より高くなかった場合
-                    if ($score->score >= $request->score) {
-                        return response()->json([], 400);
-                    }
                     //スコア未登録だった場合
                     if (empty($score)) {
-                        //フォロー情報作成
-                        ScoreRanking::create([
+                        //var_dump("ユーザー存在しなかったからつくるよん");
+                        //スコア情報
+                        $newScore = ScoreRanking::create([
                             'user_id' => $request->user_id,
                             'user_name' => $request->user_name,
                             'score' => $request->score
                         ]);
+
+                        return response()->json(['id' => $newScore->id]);
                     }
-
-
-                    //指定ユーザー送付メール情報を取得
-                    $userMail = Mail::where('id', '=', $request->mail_id)->get()->first();
-
-                    //指定ユーザー所持アイテム情報を取得
-                    $posItem = PosItem::where('user_id', '=', $request->user_id)
-                        ->where('item_id', '=', $userMail->item_id)->get();
-
-                    //所持アイテム更新
-                    //テーブル内に指定したアイテムIDが記録されていなかった場合
-                    if (count($posItem) <= 0) {
-
-                        PosItem::create([
-                            'user_id' => $request->user_id,
-                            'item_id' => $userMail->item_id,
-                            'item_num' => $userMail->item_num,
-                        ]);
-
-                        //ログ生成
-                        MailLog::create([
-                            'open_user_id' => $request->user_id,
-                            'open_mail_id' => $request->mail_id,
-                            'action' => 0,
-                        ]);
-                    } //すでに所持していた場合
+                    //スコアが前回より高くなかった場合
+                    if ($score->score >= $request->score) {
+                        var_dump("前よりスコア低かったから更新しないよん");
+                        return response()->json([], 400);
+                    }//高かった場合
                     else {
-                        //所持分と追加分のアイテムの合計値が０以上だったら
-                        if ($userMail->first()->item_num + $posItem->first()->item_num >= 0) {
-                            $posItem->first()->item_num += $userMail->first()->item_num;    //加算
-                        }//アイテムの合計値が０以下だった場合
-                        else {
-                            $posItem->first()->item_num = 0;
-                        }
-                        $posItem->first()->save();
+                        var_dump("前よりスコア高かったから更新するよん");
+                        //スコア更新
+                        $score->score = $request->score;
+                        //var_dump($score->score);
                     }
-                    //開封済みにする
-                    $mail->isOpen = 0;
-                    $mail->save();
+                    //名前更新
+                    $score->user_name = $request->user_name;
+                    //名前更新
+                    $score->save();
 
+                    //ログ作成
+
+
+                    return response()->json($score);
                 });
                 return response()->json($data);
 
