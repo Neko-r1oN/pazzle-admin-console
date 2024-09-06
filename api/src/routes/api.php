@@ -86,6 +86,10 @@
     Route::post('users/getRank', [ScoreController::class, 'getRank'])
         ->name('getRank');
 
+    //自身のみのランキング順位取得
+    Route::post('users/getMyScoreRank', [ScoreController::class, 'getMyScoreRank'])
+        ->name('getMyScoreRank');
+
     //スコア情報登録
     Route::post('users/sendScore', [ScoreController::class, 'sendScore'])
         ->name('sendScore');

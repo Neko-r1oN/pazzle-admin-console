@@ -122,6 +122,16 @@ Accept: application/json
     "user_id": 99
 }
 
+###スコアランキング取得(自分のランキング)
+POST http://localhost:8000/api/users/getMyScoreRank
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": 99
+}
+
+
 ###スコアランキング登録
 POST http://localhost:8000/api/users/sendScore
 Content-Type: application/json
