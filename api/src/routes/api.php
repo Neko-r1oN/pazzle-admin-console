@@ -78,8 +78,10 @@
     Route::post('users/mailUpdate', [UserController::class, 'mailUpdate'])
         ->name('mailUpdate');
 
+
     //スコアランキング一覧取得
-    Route::get('users/scoreRanking', [ScoreController::class, 'index'])
+    Route::middleware(NocheMiddleware::class)
+        ->get('scoreRanking', [ScoreController::class, 'index'])
         ->name('scoreRanking');
 
     //スコア順位取得

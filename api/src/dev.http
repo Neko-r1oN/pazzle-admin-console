@@ -108,8 +108,9 @@ Accept: application/json
     "mail_id": 1
 }
 
+###https://api-gravityturning.japaneast.cloudapp.azure.com/api
 ###スコアランキング一覧取得
-GET http://localhost:8000/api/users/scoreRanking
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/scoreRanking
 Accept: application/json
 
 
@@ -123,7 +124,7 @@ Accept: application/json
 }
 
 ###スコアランキング取得(自分のランキング)
-POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getMyScoreRank
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getMyScoreRank
 Content-Type: application/json
 Accept: application/json
 

@@ -31,8 +31,9 @@
             //指定された範囲内のユーザーのみを取得
             $scores = ScoreRanking::all()->sortByDesc('score')->take(100);
 
-            return response()->json(ScoreRankingResource::collection($scores), 200);
+            return response()->json($scores, 200);
         }
+
 
         //指定ユーザー情報取得
         public function getRank(Request $request)
@@ -50,7 +51,7 @@
             //指定されたuser_idのユーザー情報を取得
             $scores = ScoreLog::all()->where('user_id', '=',
                 $request->user_id)->sortByDesc('score');
-            
+
             return response()->json($scores, 200);
         }
 
