@@ -109,12 +109,12 @@ Accept: application/json
 }
 
 ###スコアランキング一覧取得
-POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/scoreRanking
+GET http://localhost:8000/api/users/scoreRanking
 Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getRank
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getRank
 Content-Type: application/json
 Accept: application/json
 

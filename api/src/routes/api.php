@@ -79,15 +79,15 @@
         ->name('mailUpdate');
 
     //スコアランキング一覧取得
-    Route::post('users/scoreRanking', [ScoreController::class, 'index'])
+    Route::get('users/scoreRanking', [ScoreController::class, 'index'])
         ->name('scoreRanking');
 
     //スコア順位取得
-    Route::post('users/getRank', [ScoreController::class, 'getRank'])
+    Route::get('users/getRank', [ScoreController::class, 'getRank'])
         ->name('getRank');
 
     //自身のみのランキング順位取得
-    Route::post('users/getMyScoreRank', [ScoreController::class, 'getMyScoreRank'])
+    Route::get('users/getMyScoreRank', [ScoreController::class, 'getMyScoreRank'])
         ->name('getMyScoreRank');
 
     //スコア情報登録
