@@ -19,7 +19,7 @@ GET http://48.218.28.94/api/itemList
 Accept: application/json
 
 ###ステージ一覧取得
-GET http://48.218.28.94/api/stageList
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/stageList
 Accept: application/json
 
 ###指定ユーザー所持アイテム情報取得
@@ -109,12 +109,12 @@ Accept: application/json
 }
 
 ###スコアランキング一覧取得
-POST http://localhost:8000/api/users/scoreRanking
+POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/scoreRanking
 Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-POST http://localhost:8000/api/users/getRank
+POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getRank
 Content-Type: application/json
 Accept: application/json
 
@@ -123,7 +123,7 @@ Accept: application/json
 }
 
 ###スコアランキング取得(自分のランキング)
-POST http://localhost:8000/api/users/getMyScoreRank
+POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getMyScoreRank
 Content-Type: application/json
 Accept: application/json
 
@@ -133,7 +133,7 @@ Accept: application/json
 
 
 ###スコアランキング登録
-POST http://localhost:8000/api/users/sendScore
+POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/sendScore
 Content-Type: application/json
 Accept: application/json
 
