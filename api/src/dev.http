@@ -116,31 +116,20 @@ Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getRank
-Content-Type: application/json
+GET http://localhost:8000/api/getRank/99
 Accept: application/json
 
-{
-    "user_id": 99
-}
-
-###スコアランキング取得(自分のランキング)
-GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/getMyScoreRank
-Content-Type: application/json
-Accept: application/json
-
-{
-    "user_id": 99
-}
 
 
-###スコアランキング登録
+
+
+###スコアランキング登録2165
 POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/sendScore
 Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 99,
-    "user_name": "99本アニメ",
-    "score": 100000
+    "user_id": 108,
+    "user_name": "a",
+    "score": 0
 }

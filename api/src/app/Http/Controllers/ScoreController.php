@@ -40,8 +40,11 @@
         public function getRank(Request $request)
         {
             //指定されたuser_idのユーザー情報を取得
-            $scores = ScoreRanking::all()->sortByDesc('score')->where('user_id', '=',
-                $request->user_id)->first();
+            //指定されたuser_idのユーザー情報を取得
+            $scores = ScoreLog::all()->where('user_id', '=',
+                $request->user_id)->take(100);
+            /*$scores = ScoreRanking::all()->sortByDesc('score')->where('user_id', '=',
+                $request->user_id)->first();*/
 
             return response()->json($scores, 200);
         }
