@@ -116,9 +116,13 @@ Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-GET http://localhost:8000/api/getRank/99
+GET http://localhost:8000/api/getRank
+Content-Type: application/json
 Accept: application/json
 
+{
+    "user_id": 99
+}
 
 
 
@@ -129,7 +133,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 108,
+    "user_id": 99,
     "user_name": "a",
     "score": 0
 }

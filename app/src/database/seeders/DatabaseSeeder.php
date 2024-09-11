@@ -15,13 +15,13 @@
         {
             $this->call(AccountsTableSeeder::class);
             //$this->call(UsersTableSeeder::class);
-            $this->call(ItemTableSeeder::class);
-            $this->call(PosItemTableSeeder::class);
-            $this->call(MailTableSeeder::class);
-            $this->call(OpenMailsTableSeeder::class);
-            $this->call(FollowsTableSeeder::class);
+            //$this->call(ItemTableSeeder::class);
+            //$this->call(PosItemTableSeeder::class);
+            //$this->call(MailTableSeeder::class);
+            //$this->call(OpenMailsTableSeeder::class);
+            //$this->call(FollowsTableSeeder::class);
             $this->call(StagesTableSeeder::class);
-            $this->call(ScoreRankingTableSeeder::class);
+            //$this->call(ScoreRankingTableSeeder::class);
 
         }
     }
