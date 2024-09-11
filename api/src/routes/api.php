@@ -86,7 +86,7 @@
 
     //スコア順位取得
     Route::middleware(NocheMiddleware::class)
-        ->get('getRank', [ScoreController::class, 'getRank'])
+        ->get('getRank/{user_id}', [ScoreController::class, 'getRank'])
         ->name('getRank');
 
     //自身のみのランキング順位取得
