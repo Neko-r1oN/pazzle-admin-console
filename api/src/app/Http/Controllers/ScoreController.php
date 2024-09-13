@@ -29,13 +29,9 @@
         public function index(Request $request)
         {
             //指定された範囲内のユーザーのみを取得
-            $scores = ScoreRanking::all()->take(100)->sortByDesc('score')->keyBy('id');
+            $scores = ScoreRanking::all()->take(100)->sortByDesc('score')->values();
 
-            $response = [
-                'scores' => $scores,
-            ];
-
-            return response()->json($response, 200);
+            return response()->json($scores, 200);
         }
 
 
