@@ -116,7 +116,7 @@ Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-GET http://localhost:8000/api/getRank/99
+GET https://api-gravityturning.japaneast.cloudap8p.azure.com/api/getRank/108
 Accept: application/json
 
 
