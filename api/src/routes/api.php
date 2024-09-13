@@ -84,14 +84,10 @@
         ->get('scoreRanking', [ScoreController::class, 'index'])
         ->name('scoreRanking');
 
-    //スコア順位取得
+    //自身のみのランキング取得
     Route::middleware(NocheMiddleware::class)
         ->get('getRank/{user_id}', [ScoreController::class, 'getRank'])
         ->name('getRank');
-
-    //自身のみのランキング順位取得
-    Route::get('users/getMyScoreRank', [ScoreController::class, 'getMyScoreRank'])
-        ->name('getMyScoreRank');
 
     //スコア情報登録
     Route::post('users/sendScore', [ScoreController::class, 'sendScore'])
