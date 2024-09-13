@@ -32,7 +32,7 @@
             $scores = ScoreRanking::all()->take(100)->sortByDesc('score')->keyBy('id');
 
             $response = [
-                'Detail' => $scores,
+                'scores' => $scores,
             ];
 
             return response()->json($response, 200);
