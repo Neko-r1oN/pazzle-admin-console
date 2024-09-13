@@ -111,7 +111,7 @@ Accept: application/json
 ###https://api-gravityturning.japaneast.cloudapp.azure.com/api
 ###
 ###スコアランキング一覧取得
-GET http://localhost:8000/api/scoreRanking
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/scoreRanking
 Accept: application/json
 
 
@@ -129,7 +129,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 99,
-    "user_name": "a",
-    "score": 0
+    "user_id": 1000,
+    "user_name": "test",
+    "score": 99999990
 }
