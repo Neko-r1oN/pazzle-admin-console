@@ -109,9 +109,9 @@ Accept: application/json
 }
 
 ###https://api-gravityturning.japaneast.cloudapp.azure.com/api
-###
+###http://localhost:8000/api
 ###スコアランキング一覧取得
-GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/scoreRanking
+GET http://localhost:8000/api/scoreRanking
 Accept: application/json
 
 

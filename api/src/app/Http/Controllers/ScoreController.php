@@ -31,7 +31,11 @@
             //指定された範囲内のユーザーのみを取得
             $scores = ScoreRanking::all()->take(100)->sortByDesc('score')->keyBy('id');
 
-            return response()->json($scores, 200);
+            $response = [
+                'Detail' => $scores,
+            ];
+
+            return response()->json($response, 200);
         }
 
 
