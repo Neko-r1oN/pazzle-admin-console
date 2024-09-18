@@ -21,7 +21,7 @@
             //$this->call(OpenMailsTableSeeder::class);
             //$this->call(FollowsTableSeeder::class);
             $this->call(StagesTableSeeder::class);
-            //$this->call(ScoreRankingTableSeeder::class);
+            $this->call(ScoreRankingTableSeeder::class);
 
         }
     }

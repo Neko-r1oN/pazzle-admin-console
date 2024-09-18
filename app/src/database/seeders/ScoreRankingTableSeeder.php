@@ -13,25 +13,25 @@
         {
             ScoreRanking::create([
                 'user_id' => 3,
-                'user_name' => "r1oN",
+                'user_name' => "プレイヤー１",
                 'score' => 2024,
             ]);
 
             ScoreRanking::create([
                 'user_id' => 4,
-                'user_name' => "Cal",
+                'user_name' => "player6",
                 'score' => 5000,
             ]);
 
             ScoreRanking::create([
                 'user_id' => 10,
-                'user_name' => "SyuEn",
+                'user_name' => "No.12",
                 'score' => 9999,
             ]);
 
             ScoreRanking::create([
                 'user_id' => 1,
-                'user_name' => "No1",
+                'user_name' => "CutieCat",
                 'score' => 1,
             ]);
         }

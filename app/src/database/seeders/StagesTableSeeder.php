@@ -54,7 +54,7 @@
             Stage::create([
                 'stage_name' => '1-13',
             ]);
-            Stage::create([
+            /*Stage::create([
                 'stage_name' => '1-14',
             ]);
             Stage::create([
@@ -74,8 +74,8 @@
             ]);
             Stage::create([
                 'stage_name' => '1-20',
-            ]);
-            
+            ]);*/
+
             /*Stage::factory(100)->create();*/
         }
 

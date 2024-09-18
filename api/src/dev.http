@@ -44,7 +44,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "8355557d-6cb0-4ed9-932e-b7b94a7b42de",
+    "name": "test99",
     "password": "f1aff659-e327-4711-8894-cae2f26b5b3f"
 }
 
