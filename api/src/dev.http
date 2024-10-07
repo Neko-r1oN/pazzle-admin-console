@@ -121,6 +121,16 @@ Accept: application/json
 
 
 
+###スコアランキング登録2165
+POST http://localhost:8000/api/users/sendScore
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": 99,
+    "user_name": "test",
+    "score": 1700
+}
 
 ###スコアランキング登録2165
 POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/sendScore
