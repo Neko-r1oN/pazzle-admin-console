@@ -57,32 +57,32 @@
 
     //ユーザー情報更新
     Route::post('users/update', [UserController::class, 'update'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('update');
 
     //ユーザー所持アイテム情報更新
     Route::post('users/posItemUpdate', [UserController::class, 'posItemUpdate'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('posItemUpdate');
 
     //ユーザー情報削除
     Route::post('users/destroy', [UserController::class, 'destroy'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('destroy');
 
     //ユーザーフォロー情報追加
     Route::post('users/follow', [UserController::class, 'follow'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('follow');
 
     //ユーザーフォロー情報削除
     Route::post('users/unfollow', [UserController::class, 'unfollow'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('unfollow');
 
     //ユーザーメール情報更新
     Route::post('users/mailUpdate', [UserController::class, 'mailUpdate'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('mailUpdate');
 
 
@@ -98,5 +98,5 @@
 
     //スコア情報登録
     Route::post('users/sendScore', [ScoreController::class, 'sendScore'])
-        ->middleware('auth:sanctum')
+        /*->middleware('auth:sanctum')*/
         ->name('sendScore');
