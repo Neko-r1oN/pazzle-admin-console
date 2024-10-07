@@ -4,20 +4,17 @@
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
-    use Items;
+    use Laravel\Sanctum\HasApiTokens;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
 
-    class User extends Model
+    class User extends Authenticatable
     {
         use HasFactory;
+        use HasApiTokens;
 
         protected $guarded = [
             'id',
         ];
 
-        public function items()
-        {
-            return $this->belongsToMany(
-                items::class, 'id', 'name')
-                ->withPivot('amount');
-        }
+
     }

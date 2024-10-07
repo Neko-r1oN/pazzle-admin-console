@@ -44,17 +44,17 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "test99",
+    "name": "test999",
     "password": "f1aff659-e327-4711-8894-cae2f26b5b3f"
 }
 
 ###ユーザー更新
-POST http://48.218.28.94/users/update
+POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/update
 Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 2,
+    "user_id": 68,
     "user_name": "SyuEn1"
 }
 
@@ -116,7 +116,7 @@ Accept: application/json
 
 
 ###スコアランキング取得(特定ユーザー)
-GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/getRank/1000
+GET https://api-gravityturning.japaneast.cloudapp.azure.com/api/getRank/1
 Accept: application/json
 
 
@@ -138,7 +138,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 99,
+    "user_id": 45685548888888,
     "user_name": "test",
-    "score": 1700
+    "score": 13700
 }

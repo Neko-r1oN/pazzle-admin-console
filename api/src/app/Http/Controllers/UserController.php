@@ -137,7 +137,10 @@
                 'exp' => 0,
                 'life' => 1,
             ]);
-            return response()->json(['user_id' => $user->id]);
+            //APIトークンを発行する
+            $token = $user->createToken($request->name)->plainTextToken;
+            //ユーザーIDとAPIトークンを返す
+            return response()->json(['user_id' => $user->id, "token" => $token]);
         }
 
         //ユーザー情報更新
@@ -187,14 +190,14 @@
                     if (empty($posItem) && $request->change_item_num > 0) {
                         //所持アイテム作成
                         $posItem = PosItem::create([
-                            'user_id' => $request->user_id,
+                            'user_id' => $request->user()->id,
                             'item_id' => $request->change_item_id,
                             'item_num' => $request->change_item_num,
                         ]);
 
                         //ログ生成
                         ItemLog::create([
-                            'get_user_id' => $request->user_id,
+                            'get_user_id' => $request->user()->id,
                             'get_item_id' => $request->change_item_id,
                             'get_item_num' => $request->change_item_num,
                         ]);
@@ -247,13 +250,13 @@
             }
             //フォロー情報作成
             $follow = Follow::create([
-                'send_user_id' => $request->follow_user_id,
+                'send_user_id' => $request->user()->id,
                 'follow_user_id' => $request->follower_user_id
             ]);
 
             //ログ生成
             FollowLog::create([
-                'follow_user_id' => $request->follow_user_id,
+                'follow_user_id' => $request->user()->id,
                 'follower_user_id' => $request->follower_user_id,
                 'action' => 1,
             ]);
