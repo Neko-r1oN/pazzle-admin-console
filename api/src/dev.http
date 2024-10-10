@@ -138,7 +138,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "user_id": 45685548888888,
+    "user_id": 1,
     "user_name": "test",
     "score": 13700
 }
