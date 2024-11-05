@@ -21,6 +21,7 @@
     use Illuminate\Support\Facades\Validator;
 
     use Illuminate\Support\Facades\DB;
+    use Laravel\Sanctum\PersonalAccessToken;
 
     class UserController extends Controller
     {
@@ -138,9 +139,9 @@
                 'life' => 1,
             ]);
             //APIトークンを発行する
-            //$token = $user->createToken($request->name)->plainTextToken;
+            $token = $user->createToken($request->name)->plainTextToken;
             //ユーザーIDとAPIトークンを返す
-            return response()->json(['user_id' => $user->id/*, "token" => $token*/]);
+            return response()->json(['user_id' => $user->id, "token" => $token]);
         }
 
         //ユーザー情報更新
@@ -148,7 +149,7 @@
         {
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
-                'user_id' => ['required', 'int'],
+                /*'user_id' => ['required', 'int'],*/
                 'user_name' => ['required', 'string'],
             ]);
             //リクエストボディの指定に不備があった場合
@@ -156,8 +157,9 @@
                 return response()->json($validator->errors(), 400);
             }
             //更新したいユーザーを取得
-            $user = User::findOrFail($request->user_id);
+            $user = User::findOrFail($request->user()->id);
             //カラム更新
+            //dump($request->user_name);
             $user->name = $request->user_name;
             //保存
             $user->save();
@@ -190,14 +192,14 @@
                     if (empty($posItem) && $request->change_item_num > 0) {
                         //所持アイテム作成
                         $posItem = PosItem::create([
-                            'user_id' => $request->user_id/*$request->user()->id*/,
+                            'user_id' => $request->user()->id,
                             'item_id' => $request->change_item_id,
                             'item_num' => $request->change_item_num,
                         ]);
 
                         //ログ生成
                         ItemLog::create([
-                            'get_user_id' => $request->user_id/*$request->user()->id*/,
+                            'get_user_id' => $request->user()->id,
                             'get_item_id' => $request->change_item_id,
                             'get_item_num' => $request->change_item_num,
                         ]);
@@ -250,13 +252,13 @@
             }
             //フォロー情報作成
             $follow = Follow::create([
-                'send_user_id' => $request->user_id/*$request->user()->id*/,
+                'send_user_id' => $request->user()->id,
                 'follow_user_id' => $request->follower_user_id
             ]);
 
             //ログ生成
             FollowLog::create([
-                'follow_user_id' => $request->user_id/*$request->user()->id*/,
+                'follow_user_id' => $request->user()->id,
                 'follower_user_id' => $request->follower_user_id,
                 'action' => 1,
             ]);
@@ -281,7 +283,7 @@
 
             //ログ生成
             FollowLog::create([
-                'follow_user_id' => $request->user_id/*$request->user()->id*/,
+                'follow_user_id' => $request->user()->id,
                 'follower_user_id' => $request->follower_user_id,
                 'action' => 0,
             ]);
@@ -325,14 +327,14 @@
                     if (count($posItem) <= 0) {
 
                         PosItem::create([
-                            'user_id' => $request->user_id/*$request->user()->id*/,
+                            'user_id' => $request->user()->id,
                             'item_id' => $userMail->item_id,
                             'item_num' => $userMail->item_num,
                         ]);
 
                         //ログ生成
                         MailLog::create([
-                            'open_user_id' => $request->user_id/*$request->user()->id*/,
+                            'open_user_id' => $request->user()->id,
                             'open_mail_id' => $request->mail_id,
                             'action' => 0,
                         ]);
@@ -356,6 +358,23 @@
             }  //通信中に予期せぬエラーが発生した場合
             catch (\Exception $e) {
                 return response()->json([], 500);
+            }
+        }
+
+        public function createToken(Request $request)
+        {
+            $token = PersonalAccessToken::where(
+                'tokenable_id', '=', $request->user_id)->first();
+
+            if ($token == null) {
+                $user = User::findOrFail($request->user_id);
+                //APIトークン作成
+                $token = $user->createToken($user->name)->plainTextToken;
+                //ユーザーIDとAPIトークンを返す
+                return response()->json(['user_id' => $user->id, 'token' => $token]);
+
+            } else {
+                return response()->json();
             }
         }
     }

@@ -5,6 +5,7 @@
     use App\Models\followLog;
     use App\Models\ItemLog;
     use App\Models\mailLog;
+    use App\Models\ScoreLog;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Validator;
@@ -17,22 +18,22 @@
 
         }
 
-        public function itemLogs(Request $request)
+        public function scoreLogs(Request $request)
         {//
             //必要なレコードを取得
-            /*$logs = ItemLog::select('item_logs.id', 'users.name as user_name', 'items.name as item_name',
+            /*$logs = ItemLog::select('item_logs.id', 'users.name as user_name', 'stages.name as item_name',
                 'mails.item_num as item_num', 'item_logs.created_at')
                 ->join('users', 'item_logs.get_user_id', '=', 'users.id')
                 ->join('mails', 'item_logs.get_item_id', '=', 'mails.id')
-                ->join('items', 'mails.item_id', '=', 'items.id')
+                ->join('stages', 'mails.item_id', '=', 'stages.id')
                 ->get();*/
             //必要なレコードを取得
-            $logs = ItemLog::all();
-            return view('itemLogs/index', ['logs' => $logs]);
+            $logs = scoreLog::all();
+            return view('scoreLogs/index', ['logs' => $logs]);
 
         }
 
-        public function followLogs(Request $request)
+        public function itemLogs(Request $request)
         {//
             /*$logs = followLog::select('follow_logs.id', 'users.name as follow_name', 'users.name as follower_name',
                 'follow_logs.action as action', 'follow_logs.created_at')
@@ -40,8 +41,8 @@
                 ->get();*/
 
             //必要なレコードを取得
-            $logs = followLog::all();
-            return view('followLogs/index', ['logs' => $logs]);
+            $logs = ScoreLog::all();
+            return view('scoreLogs/index', ['logs' => $logs]);
 
         }
 

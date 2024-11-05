@@ -39,23 +39,23 @@ GET http://48.218.28.94/api/userFollows/1
 Accept: application/json
 
 ###ユーザー登録
-POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/store
+POST http://localhost:8000/api/users/store
 Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "test999",
+    "name": "test9199",
     "password": "f1aff659-e327-4711-8894-cae2f26b5b3f"
 }
 
 ###ユーザー更新
-POST https://api-gravityturning.japaneast.cloudapp.azure.com/api/users/update
+POST http://localhost:8000/api/users/update
 Content-Type: application/json
 Accept: application/json
+Authorization:Bearer 7|WDT5vigRwIIX64qsOABvFmMtX6JS2wVTqqzXVFrC6a9f9a64
 
 {
-    "user_id": 68,
-    "user_name": "SyuEn1"
+    "user_name": "SyuEn1p"
 }
 
 ###ユーザー削除
@@ -123,12 +123,12 @@ Accept: application/json
 
 ###スコアランキング登録2165
 POST http://localhost:8000/api/users/sendScore
-Content-Type: application/json
+Content-type: application/json
 Accept: application/json
+Authorization:Bearer 7|WDT5vigRwIIX64qsOABvFmMtX6JS2wVTqqzXVFrC6a9f9a64
 
 {
-    "user_id": 99,
-    "user_name": "test",
+    "user_name": "TokenTest1",
     "score": 1700
 }
 
@@ -141,4 +141,24 @@ Accept: application/json
     "user_id": 1,
     "user_name": "test",
     "score": 13700
+}
+
+###既成ユーザーのトークン作成
+POST http://localhost:8000/api/users/createToken
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_id": "51"
+}
+
+
+###ユーザー登録
+POST http://localhost:8000/api/users/store
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "test9199",
+    "password": "f1aff659-e327-4711-8894-cae2f26b5b3f"
 }

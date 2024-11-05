@@ -4,6 +4,7 @@
 
     use App\Models\Account;
     use App\Models\Achieve;
+    use App\Models\Stage;
     use App\Models\User;
     use App\Models\Item;
     use App\Models\PosItem;
@@ -65,7 +66,7 @@
 
             //テーブルの全てのレコードを取得
             $items = Item::all();
-            return view('items/index', ['items' => $items]);
+            return view('items/index', ['stages' => $items]);
 
 
         }
@@ -74,10 +75,10 @@
         {
 
             //必要なレコードを取得
-            $posItems = PosItem::select('pos_items.id', 'users.name as user_name', 'items.name as item_name',
+            $posItems = PosItem::select('pos_items.id', 'users.name as user_name', 'stages.name as item_name',
                 'item_num')
                 ->join('users', 'pos_items.user_id', '=', 'users.id')
-                ->join('items', 'pos_items.item_id', '=', 'items.id')
+                ->join('stages', 'pos_items.item_id', '=', 'stages.id')
                 ->get();
 
 
@@ -91,8 +92,8 @@
 
             //必要なレコードを取得
             $mails = Mail::select('mails.id', 'mails.title as mail_title', 'mails.message as mail_message',
-                'items.name as item_name', 'mails.item_num')
-                ->join('items', 'mails.item_id', '=', 'items.id')
+                'stages.name as item_name', 'mails.item_num')
+                ->join('stages', 'mails.item_id', '=', 'stages.id')
                 ->get();
             return view('mails/index', ['mails' => $mails]);
 
@@ -106,22 +107,22 @@
             //必要なレコードを取得
             $posMails = OpenMail::select('open_mails.id', 'users.name as user_name', 'mails.title as mail_title',
                 'mails.message as mail_message',
-                'items.name as item_name', 'mails.item_num', 'open_mails.isOpen')
+                'stages.name as item_name', 'mails.item_num', 'open_mails.isOpen')
                 ->join('users', 'open_mails.user_id', '=', 'users.id')
                 ->join('mails', 'open_mails.mail_id', '=', 'mails.id')
-                ->join('items', 'mails.item_id', '=', 'items.id')
+                ->join('stages', 'mails.item_id', '=', 'stages.id')
                 ->get();
 
 
             return view('posMails/index', ['posMails' => $posMails]);
         }
 
-        public function achieveList(Request $request)
+        public function stageList(Request $request)
         {//
 
             //テーブルの全てのレコードを取得
-            $achieves = Achieve::all();
-            return view('achieves/index', ['achieves' => $achieves]);
+            $stages = Stage::all();
+            return view('stages/index', ['stages' => $stages]);
 
 
         }

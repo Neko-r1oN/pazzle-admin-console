@@ -51,7 +51,7 @@
         {
             //バリテーションチェック
             $validator = Validator::make(request()->all(), [
-                'user_id' => ['required', 'int'],
+                /*'user_id' => ['required', 'int'],*/
                 "user_name" => ['required', 'string'],
                 "score" => ['required', 'int']
             ]);
@@ -69,7 +69,7 @@
 
                     //ログ作成
                     ScoreLog::create([
-                        'user_id' => $request->user_id,
+                        'user_id' => $request->user()->id,
                         'user_name' => $request->user_name,
                         'score' => $request->score
                     ]);
@@ -79,7 +79,7 @@
                         //var_dump("ユーザー存在しなかったからつくるよん");
                         //スコア情報
                         $newScore = ScoreRanking::create([
-                            'user_id' => $request->user_id,
+                            'user_id' => $request->user()->id,
                             'user_name' => $request->user_name,
                             'score' => $request->score
                         ]);

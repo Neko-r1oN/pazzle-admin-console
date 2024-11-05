@@ -32,8 +32,10 @@
 
             //ユーザーリスト表示
             Route::get('users', [AccountController::class, 'userList'])->name('users.index');
+            //ステージリスト表示
+            Route::get('stages', [AccountController::class, 'stageList'])->name('stages.index');
             //アイテムリスト表示
-            Route::get('items', [AccountController::class, 'itemList'])->name('items.index');
+            Route::get('items', [AccountController::class, 'itemList'])->name('stages.index');
             //所持アイテムリスト表示
             Route::get('posItems', [AccountController::class, 'posItemList'])->name('posItems.index');
             //マスターメールリスト表示
@@ -43,15 +45,18 @@
             //ユーザーフォローリスト表示
             Route::get('followList', [UserController::class, 'followList'])->name('follows.index');
 
-            Route::get('achieveList', [AccountController::class, 'achieveList'])->name('achieves.index');
+            Route::get('achieveList', [AccountController::class, 'stageList'])->name('stages.index');
 
+            //スコアログ表示
+            Route::get('scoreLogs', [LogController::class, 'scoreLogs'])->name('scoreLogs.index');
+            /*
             //アイテムログ表示
-            Route::get('itemLogs', [LogController::class, 'itemLogs'])->name('itemLogs.index');
+            Route::get('scoreLogs', [LogController::class, 'itemLogs'])->name('scoreLogs.index');
             //アイテムログ表示
             Route::get('followLogs', [LogController::class, 'followLogs'])->name('followLogs.index');
             //アイテムログ表示
             Route::get('mailLogs', [LogController::class, 'mailLogs'])->name('mailLogs.index');
-
+*/
 
             #メール送信画面表示
             Route::get('send', [MailController::class, 'index'])->name('send.index');

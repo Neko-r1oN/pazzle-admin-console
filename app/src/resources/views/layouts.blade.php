@@ -34,35 +34,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('items.index') }}" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
-                        </svg>
-                        アイテム
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('mails.index') }}" class="nav-link">
+                    <a href="{{ route('stages.index') }}" class="nav-link">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#table"></use>
                         </svg>
-                        メール
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('achieves.index') }}" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#table"></use>
-                        </svg>
-                        アチーブメント
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('itemLogs.index') }}" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#table"></use>
-                        </svg>
-                        ログ
+                        ステージリスト
                     </a>
                 </li>
 
@@ -83,27 +59,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('posItems.index') }}" class="nav-link">
+                    <a href="{{ route('scoreLogs.index') }}" class="nav-link">
                         <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#people-circle"></use>
+                            <use xlink:href="#table"></use>
                         </svg>
-                        所持アイテムリスト
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('posMails.index') }}" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#people-circle"></use>
-                        </svg>
-                        送信メールリスト
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('follows.index') }}" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#people-circle"></use>
-                        </svg>
-                        ユーザーフォローリスト
+                        スコアログ
                     </a>
                 </li>
                 <hr>
