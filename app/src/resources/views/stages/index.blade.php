@@ -7,6 +7,10 @@
             <li><a href="accounts" class="nav-link ">account</a></li>
             <li><a href="stages" class="nav-link px-2 link-secondary">stages</a></li>
         </ul>
+        <div class="justify-content-center">
+            {{$stages->links('vendor.pagination.bootstrap-5')}}
+        </div>
+
         <table class="table">
             <thead class="table-dark">
             <tr>

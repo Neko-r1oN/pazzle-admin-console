@@ -7,7 +7,9 @@
             <li><a href="accounts" class="nav-link px-2 link-secondary">account</a></li>
             <li><a href="stages" class="nav-link">stages</a></li>
         </ul>
-
+        <div class="justify-content-center">
+            {{$accounts->links('vendor.pagination.bootstrap-5')}}
+        </div>
         <table class="table">
             <thead class="table-dark">
             <tr>
