@@ -8,10 +8,7 @@
             <li><a href="scoreLogs" class="nav-link px-2 link-secondary">log</a></li>
         </ul>
 
-        <div class="justify-content-center">
-            {{$logs->links('vendor.pagination.bootstrap-5')}}
-        </div>
-
+       
         <table class="table">
             <thead class="table-dark">
             <tr>
